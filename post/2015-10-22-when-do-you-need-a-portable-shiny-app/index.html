@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>When do you need a portable Shiny App? - @haozhu233</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="Hao Zhu" />
+  <meta name="description" content="Last year, Lee Pang wrote an amazing tutorial on how to set up a Desktop Shiny App with the portable version of R and Chrome. That post helped me a lot this year when I was trying to do a big proof-of-concept project to introduce shiny into the data management workflow in my work place. Now thanks to the success of that project, my institution is moving towards the server version of shiny and I would like to share some experiences I got during this progress in my recent posts before I say goodbye to this method." />
+
+  <meta name="keywords" content="R, machine learning, Arduino, React Native" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.25.1" />
+
+
+<link rel="canonical" href="/post/2015-10-22-when-do-you-need-a-portable-shiny-app/" />
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="icon" href="/favicon.ico" />
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+
+
+
+<link href="/dist/even.min.css?v=2.7.2" rel="stylesheet">
+<link href="/lib/fancybox/jquery.fancybox-3.1.20.min.css" rel="stylesheet">
+
+<meta property="og:title" content="When do you need a portable Shiny App?" />
+<meta property="og:description" content="Last year, Lee Pang wrote an amazing tutorial on how to set up a Desktop Shiny App with the portable version of R and Chrome. That post helped me a lot this year when I was trying to do a big proof-of-concept project to introduce shiny into the data management workflow in my work place. Now thanks to the success of that project, my institution is moving towards the server version of shiny and I would like to share some experiences I got during this progress in my recent posts before I say goodbye to this method." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/2015-10-22-when-do-you-need-a-portable-shiny-app/" />
+
+
+
+<meta property="article:published_time" content="2015-10-22T00:00:00&#43;00:00"/>
+<meta property="article:modified_time" content="2015-10-22T00:00:00&#43;00:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="When do you need a portable Shiny App?">
+<meta itemprop="description" content="Last year, Lee Pang wrote an amazing tutorial on how to set up a Desktop Shiny App with the portable version of R and Chrome. That post helped me a lot this year when I was trying to do a big proof-of-concept project to introduce shiny into the data management workflow in my work place. Now thanks to the success of that project, my institution is moving towards the server version of shiny and I would like to share some experiences I got during this progress in my recent posts before I say goodbye to this method.">
+
+
+<meta itemprop="dateModified" content="2015-10-22T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="872">
+
+
+
+<meta itemprop="keywords" content="" />
+
+
+  <meta name="twitter:card" content="summary"/>
+
+
+
+<meta name="twitter:text:title" content="When do you need a portable Shiny App?"/>
+<meta name="twitter:title" content="When do you need a portable Shiny App?"/>
+<meta name="twitter:description" content="Last year, Lee Pang wrote an amazing tutorial on how to set up a Desktop Shiny App with the portable version of R and Chrome. That post helped me a lot this year when I was trying to do a big proof-of-concept project to introduce shiny into the data management workflow in my work place. Now thanks to the success of that project, my institution is moving towards the server version of shiny and I would like to share some experiences I got during this progress in my recent posts before I say goodbye to this method."/>
+
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">@haozhu233</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">About</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">@haozhu233</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">About</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">When do you need a portable Shiny App?</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2015-10-22 </span>
+        
+        
+        
+      </div>
+    </header>
+
+    
+    
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#when-do-you-need-a-portable-shiny-app">When do you need a portable Shiny App?</a></li>
+<li><a href="#conclusion">Conclusion</a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+    
+    <div class="post-content">
+      
+
+<p>Last year, <a href="http://oddhypothesis.blogspot.com/">Lee Pang</a> wrote <a href="http://oddhypothesis.blogspot.com/2014/04/deploying-self-contained-r-apps-to.html">an amazing tutorial on how to set up a Desktop Shiny App</a> with the portable version of R and Chrome. That post helped me a lot this year when I was trying to do a big proof-of-concept project to introduce shiny into the data management workflow in my work place. Now thanks to the success of that project, my institution is moving towards the server version of shiny and I would like to share some experiences I got during this progress in my recent posts before I say goodbye to this method.</p>
+
+<h2 id="when-do-you-need-a-portable-shiny-app">When do you need a portable Shiny App?</h2>
+
+<p>After testing out <em>portable Shiny Apps</em>, <em>community Shiny server</em> and <em>Shiny server Pro</em>, I feel like I can share some of my opinions about these three options. Basically, you may want to consider a portable shiny app when:</p>
+
+<p>1) <strong>You or your workplace demands data security</strong><br />
+Shiny is great! However, the community version of shiny doesn&rsquo;t have SSL or authentication enabled. Sure, you can set up an <a href="http://nginx.org/en/">NGINX</a> over the top of the Shiny Server and enable SSL for that. However, to my limited knowledge, there is no easy way to set up authentication on Shiny server itself (You may set up an authentication within your Shiny App following <a href="http://withr.me/authentication-of-shiny-server-application-using-a-simple-method/">this instruction</a>. It might be a good way to go but it makes me feel a little uncomfortable). As a result, if you are working in an industry demanding high data security, you would better be cautious to put any data on the community version of Shiny Server.<br />
+On the other hand, the portable version, is actually pretty safe. Instead of settling on a private network, which allows everyone in your company be able to access it, it actually settles on the workstations of specific people. Someone has to log into that computer in order to use the Shiny App. Generally, using the portable version of Shiny App does neither increase nor decrease the security level.</p>
+
+<p>2) <strong>You or your workplace/institution don&rsquo;t have enough budget to buy Shiny Server Pro</strong><br />
+<a href="https://www.rstudio.com/products/shiny/shiny-server/">Shiny Server Pro</a> offers solutions to address our security concern but&hellip;Man, it is very expensive. To the date this blog is written (10-23-2015), If you are using it for teaching, it&rsquo;s FREE. If you are doing research, it&rsquo;s 5K per year, and otherwise, it&rsquo;s 10k per year. Honestly speaking, this price is not bad at all comparing with other products on the market, like the SAS one, which I heard will take 75K annually. However, it is still expensive enough that people need to think about.</p>
+
+<p>3) <strong>You have an IT-lockdown in your institution</strong>
+Many of us have our IT department holding the administrator right of our workstations. As an analyst, I sure have a copy of R on my computer but it would be a painful experience to help install R on our customers&rsquo; (in many cases, our colleagues&rsquo;) computer, unless to say someone needs to maintain it and update R and its packages to the lastest version as you are using. In this case, using portable R with portable shiny seems to be a a straight-forward solution. If you don&rsquo;t have an IT-lockdown in your workplace, good for you. Then you can probably follow what is explained in <a href="http://oddhypothesis.blogspot.com/2014/04/deploying-self-contained-r-apps-to.html">Lee Pang&rsquo;s post</a> to call the &ldquo;real&rdquo; R instead of the portable R on someone else&rsquo;s computer.</p>
+
+<p>4) <strong>You prefer not to mass around with setting up a server</strong><br />
+Setting up a shiny server can be <a href="https://github.com/leondutoit/shiny-server-on-ubuntu"><em>easy</em></a>, but it can also be complicated if you want to some customizations (eg, you want to install it on a copy of redhat/centOS). Coding inside a terminal might be good for nerds (like me), but I can see it might scare away a lot of people as well.</p>
+
+<p>5) <strong>Your customers don&rsquo;t care too much about waiting</strong><br />
+The portable version of Shiny is using the portable R, which is only available as the 32-bit version. Also, when you try to open up the protable shiny app, it starts from starting portable R, which also takes time. In practice, the lag is noticible but still in acceptable level. The app should be ready within 5 sec after you double-click the shortcut.</p>
+
+<p>6) <strong>You know how to update R and R package on other people&rsquo;s computer</strong>
+I put this point at the very end but it is actually very important. It might sounds a little ridiculous but it is actually a very important question to think about when you are trying to design an app for a long-term project. The first thing you should keep in mind that, <strong>please don&rsquo;t expect other people to install/update R packages for you</strong>. I will explain the way I choose to solve this issue in another blog post.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>While having a working Shiny Server Pro is still the ultimate solution, having a portable Shiny App may still work as &ldquo;a solution&rdquo; in many cases. It is free and safe. You don&rsquo;t need to worry about messing around with server and its speed is still acceptable. If you just start with Shiny and want to prove it to your senior-management team that this product worths something, I would say you should definitely check out this portable solution.</p>
+
+    </div>
+
+    
+    
+<div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">Hao Zhu</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">2015-10-22</span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">License</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+
+    
+    
+
+    <footer class="post-footer">
+      
+
+      
+      <nav class="post-nav">
+        
+          <a class="prev" href="/post/what-s-new-in-kableextra-0-7-0/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">What’s New in kableExtra 0.7.0</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        
+          <a class="next" href="/post/2015-04-15-architectual-thinking-in-rmarkdown/">
+            <span class="next-text nav-default">&#34;Build&#34; a reproducible report, instead of &#34;writing&#34; one</span>
+            <span class="prev-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+  
+
+  
+
+  
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:haozhu233@gmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://stackoverflow.com/users/4586888/hao" class="iconfont icon-stack-overflow" title="stack-overflow"></a>
+      <a href="https://twitter.com/haozhu233" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="https://www.linkedin.com/in/haozhu233/" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="https://github.com/haozhu233" class="iconfont icon-github" title="github"></a>
+  <a href="/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2018
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">Hao Zhu</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+<script src="/lib/highlight/highlight.pack.js?v=20171001"></script>
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox-3.1.20.min.js"></script>
+<script type="text/javascript" src="/dist/even.min.js?v=2.7.2"></script>
+
+
+
+
+</body>
+</html>

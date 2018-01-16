@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>&#34;Build&#34; a reproducible report, instead of &#34;writing&#34; one - @haozhu233</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="Hao Zhu" />
+  <meta name="description" content="(This blog post is largely built upon the inspiration I got after reading the 2nd chapter of Code Complete 2, which is a very practical book even for someone like me, who came into this field without a computer science background. I would highly recommend any data analysts or statistians who do a lot of programming works to read it.) 
+To some extent, the development of Rmarkdown (and knitr) is really revolutionary for scientific researches." />
+
+  <meta name="keywords" content="R, machine learning, Arduino, React Native" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.25.1" />
+
+
+<link rel="canonical" href="/post/2015-04-15-architectual-thinking-in-rmarkdown/" />
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="icon" href="/favicon.ico" />
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+
+
+
+<link href="/dist/even.min.css?v=2.7.2" rel="stylesheet">
+<link href="/lib/fancybox/jquery.fancybox-3.1.20.min.css" rel="stylesheet">
+
+<meta property="og:title" content="&#34;Build&#34; a reproducible report, instead of &#34;writing&#34; one" />
+<meta property="og:description" content="(This blog post is largely built upon the inspiration I got after reading the 2nd chapter of Code Complete 2, which is a very practical book even for someone like me, who came into this field without a computer science background. I would highly recommend any data analysts or statistians who do a lot of programming works to read it.) 
+To some extent, the development of Rmarkdown (and knitr) is really revolutionary for scientific researches." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/2015-04-15-architectual-thinking-in-rmarkdown/" />
+
+
+
+<meta property="article:published_time" content="2015-04-15T00:00:00&#43;00:00"/>
+<meta property="article:modified_time" content="2015-04-15T00:00:00&#43;00:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="&#34;Build&#34; a reproducible report, instead of &#34;writing&#34; one">
+<meta itemprop="description" content="(This blog post is largely built upon the inspiration I got after reading the 2nd chapter of Code Complete 2, which is a very practical book even for someone like me, who came into this field without a computer science background. I would highly recommend any data analysts or statistians who do a lot of programming works to read it.) 
+To some extent, the development of Rmarkdown (and knitr) is really revolutionary for scientific researches.">
+
+
+<meta itemprop="dateModified" content="2015-04-15T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="602">
+
+
+
+<meta itemprop="keywords" content="" />
+
+
+  <meta name="twitter:card" content="summary"/>
+
+
+
+<meta name="twitter:text:title" content="&#34;Build&#34; a reproducible report, instead of &#34;writing&#34; one"/>
+<meta name="twitter:title" content="&#34;Build&#34; a reproducible report, instead of &#34;writing&#34; one"/>
+<meta name="twitter:description" content="(This blog post is largely built upon the inspiration I got after reading the 2nd chapter of Code Complete 2, which is a very practical book even for someone like me, who came into this field without a computer science background. I would highly recommend any data analysts or statistians who do a lot of programming works to read it.) 
+To some extent, the development of Rmarkdown (and knitr) is really revolutionary for scientific researches."/>
+
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">@haozhu233</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">About</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">@haozhu233</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">About</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">&#34;Build&#34; a reproducible report, instead of &#34;writing&#34; one</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2015-04-15 </span>
+        
+        
+        
+      </div>
+    </header>
+
+    
+    
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  
+  <div class="post-toc-content always-active">
+    
+  </div>
+</div>
+
+    
+    <div class="post-content">
+      <p><span style="color: lightgrey"> (This blog post is largely built upon the inspiration I got after reading the 2nd chapter of <a href="http://www.amazon.com/Code-Complete-Practical-Handbook-Construction/dp/0735619670">Code Complete 2</a>, which is a very practical book even for someone like me, who came into this field without a computer science background. I would highly recommend any data analysts or statistians who do a lot of programming works to read it.) </span></p>
+
+<p>To some extent, the development of <a href="http://rmarkdown.rstudio.com/">Rmarkdown</a> (and <a href="http://yihui.name/knitr/">knitr</a>) is really revolutionary for scientific researches. For hundreds of years, scientists had spent way too much their valuable time on fighting with the formatting issues in their reports. In the old days, a last-minute change on the study data can be a real disaster to ruin a researcher&rsquo;s life, at least for a few hours. Now, with <code>Rmarkdown</code>, it&rsquo;s like every scientist can hire his/her own <a href="http://en.wikipedia.org/wiki/Markup_language#History">copy marker</a> to make sure the reports are presented in a good shape. One of the key features of <code>Rmarkdown</code> is that the reports generated by <code>Rmarkdown</code> can update themselves based on changes made to the database. However, the question is that, for these &ldquo;smart&rdquo; reports, is it still appropriate to say we are &ldquo;writing&rdquo; them?</p>
+
+<p>When we say we are &ldquo;writing reports&rdquo;, it suggests that we are writing them like we are writing a letter or a novel. The practice of &ldquo;writing&rdquo; is relatively linear — you start from the beginning and finish at the end. If you want to add tables and figures, you should stop your &ldquo;writing&rdquo; process, go ahead to make them, add them into your report, and restart the &ldquo;writing&rdquo; process. If you project this process into the process of writing a <code>Rmarkdown</code> file, you are expecting to see something like this:
+&gt; I have two dogs.<br />
+&gt; {r}<br />
+&gt; code.to.generate.a.picture.code.to.generate.a.picture.<br />
+&gt; code.to.generate.a.picture.code.to.generate.a.picture.<br />
+&gt; &hellip;<br />
+&gt; &hellip;<br />
+&gt; code.to.generate.a.picture.code.to.generate.a.picture.<br />
+&gt; code.to.generate.a.picture.code.to.generate.a.picture.<br />
+&gt; The bigger one is a Boarder Collie.</p>
+
+<p>This format might still be okay if you just want to write a short instruction or a blog post. However, imagine that you are writing a 50-page paper with 20+ tables and 10+ figures, how&rsquo;s your life going to be when you want to re-read your source <code>.rmd</code> file if you threw everything into one basket? In such a case, the readability of the original <code>.rmd</code> file is so low that it is very difficult to maintain it. Needless to say what if your analytical codes produce an error message when you are tring to generate the file. It&rsquo;s going to be a nightmare to find out where the bug is and to fix it. After all, it goes against the design philosophy of the <code>markdown</code> language, which is to maximize the readability of the source codes. Texts mixed with page-long analytical codes are not really readable.</p>
+
+<p>Now, let&rsquo;s take a lesson from the workflow of architects. When an architect is trying to build a house, first of all, (s)he would draw out the blue print of that project so he knows what is expected to be done. If (s)he wants to install cabinets into the kitchen, (s)he should either hire someone to build them or buy them directly from the furniture store. Then, on someday, some guys will move those cabinets into the house and put them on. If we adopt the architect&rsquo;s philosophy into our case, we will have a &ldquo;blue print&rdquo; in our mind, make the tables (cabinets) somewhere else, import them into our <code>.rmd</code> file (house) and we will only call those tables when we need them (final installation). Like this:</p>
+
+<blockquote>
+<p>I have two dogs.<br />
+image_path: public/IMG_0074.png<br />
+The bigger one is a Boarder Collie.</p>
+</blockquote>
+
+<p>See, a lot better, right?</p>
+
+    </div>
+
+    
+    
+<div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">Hao Zhu</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">2015-04-15</span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">License</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+
+    
+    
+
+    <footer class="post-footer">
+      
+
+      
+      <nav class="post-nav">
+        
+          <a class="prev" href="/post/2015-10-22-when-do-you-need-a-portable-shiny-app/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">When do you need a portable Shiny App?</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        
+          <a class="next" href="/post/2015-04-15-mvvm-in-reproducible-research/">
+            <span class="next-text nav-default">How to apply the MVVM pattern in reproducible research?</span>
+            <span class="prev-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+  
+
+  
+
+  
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:haozhu233@gmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://stackoverflow.com/users/4586888/hao" class="iconfont icon-stack-overflow" title="stack-overflow"></a>
+      <a href="https://twitter.com/haozhu233" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="https://www.linkedin.com/in/haozhu233/" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="https://github.com/haozhu233" class="iconfont icon-github" title="github"></a>
+  <a href="/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2018
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">Hao Zhu</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+<script src="/lib/highlight/highlight.pack.js?v=20171001"></script>
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox-3.1.20.min.js"></script>
+<script type="text/javascript" src="/dist/even.min.js?v=2.7.2"></script>
+
+
+
+
+</body>
+</html>

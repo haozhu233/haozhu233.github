@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>What’s New in kableExtra 0.7.0 - @haozhu233</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="Hao Zhu" />
+  <meta name="description" content="kableExtra 0.7.0 is on CRAN now. This update includes quite a few long-waited new features, including immediate display of HTML table in the Viewer panel and a remake for footnote (in replacement for add_footnote), and some important bug fixes.
+New Features Live view of HTML table in RStudio HTML tables generated through kableExtra now has its own class and will be previewed in the Viewer panel when it’s printed. I personally have wanted this feature for a long time." />
+
+  <meta name="keywords" content="R, machine learning, Arduino, React Native" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.25.1" />
+
+
+<link rel="canonical" href="/post/what-s-new-in-kableextra-0-7-0/" />
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="icon" href="/favicon.ico" />
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+
+
+
+<link href="/dist/even.min.css?v=2.7.2" rel="stylesheet">
+<link href="/lib/fancybox/jquery.fancybox-3.1.20.min.css" rel="stylesheet">
+
+<meta property="og:title" content="What’s New in kableExtra 0.7.0" />
+<meta property="og:description" content="kableExtra 0.7.0 is on CRAN now. This update includes quite a few long-waited new features, including immediate display of HTML table in the Viewer panel and a remake for footnote (in replacement for add_footnote), and some important bug fixes.
+New Features Live view of HTML table in RStudio HTML tables generated through kableExtra now has its own class and will be previewed in the Viewer panel when it’s printed. I personally have wanted this feature for a long time." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/what-s-new-in-kableextra-0-7-0/" />
+
+
+
+<meta property="article:published_time" content="2018-01-16T00:00:00&#43;00:00"/>
+<meta property="article:modified_time" content="2018-01-16T00:00:00&#43;00:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="What’s New in kableExtra 0.7.0">
+<meta itemprop="description" content="kableExtra 0.7.0 is on CRAN now. This update includes quite a few long-waited new features, including immediate display of HTML table in the Viewer panel and a remake for footnote (in replacement for add_footnote), and some important bug fixes.
+New Features Live view of HTML table in RStudio HTML tables generated through kableExtra now has its own class and will be previewed in the Viewer panel when it’s printed. I personally have wanted this feature for a long time.">
+
+
+<meta itemprop="dateModified" content="2018-01-16T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="481">
+
+
+
+<meta itemprop="keywords" content="R,R package,kableExtra," />
+
+
+  <meta name="twitter:card" content="summary"/>
+
+
+
+<meta name="twitter:text:title" content="What’s New in kableExtra 0.7.0"/>
+<meta name="twitter:title" content="What’s New in kableExtra 0.7.0"/>
+<meta name="twitter:description" content="kableExtra 0.7.0 is on CRAN now. This update includes quite a few long-waited new features, including immediate display of HTML table in the Viewer panel and a remake for footnote (in replacement for add_footnote), and some important bug fixes.
+New Features Live view of HTML table in RStudio HTML tables generated through kableExtra now has its own class and will be previewed in the Viewer panel when it’s printed. I personally have wanted this feature for a long time."/>
+
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">@haozhu233</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">About</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">@haozhu233</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">About</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">What’s New in kableExtra 0.7.0</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2018-01-16 </span>
+        <div class="post-category">
+            
+              <a href="/categories/r/"> R </a>
+            
+          </div>
+        
+        
+      </div>
+    </header>
+
+    
+    
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  
+  <div class="post-toc-content always-active">
+    
+  </div>
+</div>
+
+    
+    <div class="post-content">
+      <p>kableExtra 0.7.0 is on CRAN now. This update includes quite a few long-waited new features, including immediate display of HTML table in the Viewer panel and a remake for <code>footnote</code> (in replacement for <code>add_footnote</code>), and some important bug fixes.</p>
+<div id="new-features" class="section level1">
+<h1>New Features</h1>
+<div id="live-view-of-html-table-in-rstudio" class="section level2">
+<h2>Live view of HTML table in RStudio</h2>
+<p>HTML tables generated through <code>kableExtra</code> now has its own class and will be previewed in the Viewer panel when it’s printed. I personally have wanted this feature for a long time. :)</p>
+<iframe src="https://giphy.com/embed/3ohc0PDQHiunV8qluo" width="480" height="198" frameBorder="0" class="giphy-embed" allowFullScreen>
+</iframe>
+</div>
+<div id="footnote-in-replacement-of-add_footnote" class="section level2">
+<h2>footnote in replacement of add_footnote</h2>
+<p>Believe it or not, <code>add_footnote</code> is the first function I wrote for <code>kableExtra</code> and it was written about 1 year before the second function <code>kable_styling</code> was written. 😂 Some of the designs are sort of out-dated and restricted my ability to add new features to it. Therefore, I created this new <code>footnote</code> function in hope that it can replace <code>add_footnote</code> on most parts.</p>
+<p>What you will gain: - Ability to use 4 notation systems (general, number, alphabet or symbol) at the same time. A lot of folks have asked me for this feature because of the APA style recommendation. It was completely not possible with <code>add_footnote</code> and its auto-numbering system. Now you can. - Ability to add non-labelled footnotes via the <code>general</code> type - Ability to add customizable section header - Ability to put all footnotes in a section into a chunk. In the past, you can only add footnotes as a list.</p>
+<p>What you will loose: - The auto-numbered in-table notations (for <code>footnote</code> please use <code>footnote_marker_***()</code> to make in-table notations. See package vignette for details.)</p>
+<p>I don’t want to break people’s existing code whenever possible so <code>add_footnote</code> will still be there for a while. I will try to maintain it but maybe not that actively.</p>
+<pre class="r"><code>library(knitr)</code></pre>
+<pre><code>## Warning: package &#39;knitr&#39; was built under R version 3.4.3</code></pre>
+<pre class="r"><code>library(kableExtra)
+kable(mtcars[1:5, 1:5], &quot;html&quot;) %&gt;%
+  kable_styling(&quot;striped&quot;, full_width = F) %&gt;%
+  footnote(alphabet = c(&quot;Footnote 1&quot;, &quot;Footnote 2&quot;))</code></pre>
+<table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+mpg
+</th>
+<th style="text-align:right;">
+cyl
+</th>
+<th style="text-align:right;">
+disp
+</th>
+<th style="text-align:right;">
+hp
+</th>
+<th style="text-align:right;">
+drat
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Mazda RX4
+</td>
+<td style="text-align:right;">
+21.0
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+160
+</td>
+<td style="text-align:right;">
+110
+</td>
+<td style="text-align:right;">
+3.90
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Mazda RX4 Wag
+</td>
+<td style="text-align:right;">
+21.0
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+160
+</td>
+<td style="text-align:right;">
+110
+</td>
+<td style="text-align:right;">
+3.90
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Datsun 710
+</td>
+<td style="text-align:right;">
+22.8
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+108
+</td>
+<td style="text-align:right;">
+93
+</td>
+<td style="text-align:right;">
+3.85
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Hornet 4 Drive
+</td>
+<td style="text-align:right;">
+21.4
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+258
+</td>
+<td style="text-align:right;">
+110
+</td>
+<td style="text-align:right;">
+3.08
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Hornet Sportabout
+</td>
+<td style="text-align:right;">
+18.7
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+360
+</td>
+<td style="text-align:right;">
+175
+</td>
+<td style="text-align:right;">
+3.15
+</td>
+</tr>
+</tbody>
+<tfoot>
+<tr>
+<td style="padding: 0; border: 0;" colspan="100%">
+<sup>a</sup> Footnote 1
+</td>
+</tr>
+<tr>
+<td style="padding: 0; border: 0;" colspan="100%">
+<sup>b</sup> Footnote 2
+</td>
+</tr>
+</tfoot>
+</table>
+</div>
+<div id="now-those-_spec-functions-can-underlinestrikeout-or-add-some-customized-css-to-texts" class="section level2">
+<h2>Now those <code>*_spec()</code> functions can underline/strikeout or add some customized CSS to texts</h2>
+<pre class="r"><code>kable(mtcars[1:5, 1:5], &quot;html&quot;) %&gt;%
+  kable_styling(&quot;striped&quot;, full_width = F) %&gt;%
+  row_spec(1, strikeout = T) %&gt;%
+  row_spec(2, underline = T) %&gt;%
+  footnote(alphabet = c(&quot;Footnote 1&quot;, &quot;Footnote 2&quot;))</code></pre>
+<table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+mpg
+</th>
+<th style="text-align:right;">
+cyl
+</th>
+<th style="text-align:right;">
+disp
+</th>
+<th style="text-align:right;">
+hp
+</th>
+<th style="text-align:right;">
+drat
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;text-decoration: line-through;">
+Mazda RX4
+</td>
+<td style="text-align:right;text-decoration: line-through;">
+21.0
+</td>
+<td style="text-align:right;text-decoration: line-through;">
+6
+</td>
+<td style="text-align:right;text-decoration: line-through;">
+160
+</td>
+<td style="text-align:right;text-decoration: line-through;">
+110
+</td>
+<td style="text-align:right;text-decoration: line-through;">
+3.90
+</td>
+</tr>
+<tr>
+<td style="text-align:left;text-decoration: underline;">
+Mazda RX4 Wag
+</td>
+<td style="text-align:right;text-decoration: underline;">
+21.0
+</td>
+<td style="text-align:right;text-decoration: underline;">
+6
+</td>
+<td style="text-align:right;text-decoration: underline;">
+160
+</td>
+<td style="text-align:right;text-decoration: underline;">
+110
+</td>
+<td style="text-align:right;text-decoration: underline;">
+3.90
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Datsun 710
+</td>
+<td style="text-align:right;">
+22.8
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+108
+</td>
+<td style="text-align:right;">
+93
+</td>
+<td style="text-align:right;">
+3.85
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Hornet 4 Drive
+</td>
+<td style="text-align:right;">
+21.4
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+258
+</td>
+<td style="text-align:right;">
+110
+</td>
+<td style="text-align:right;">
+3.08
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Hornet Sportabout
+</td>
+<td style="text-align:right;">
+18.7
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+360
+</td>
+<td style="text-align:right;">
+175
+</td>
+<td style="text-align:right;">
+3.15
+</td>
+</tr>
+</tbody>
+<tfoot>
+<tr>
+<td style="padding: 0; border: 0;" colspan="100%">
+<sup>a</sup> Footnote 1
+</td>
+</tr>
+<tr>
+<td style="padding: 0; border: 0;" colspan="100%">
+<sup>b</sup> Footnote 2
+</td>
+</tr>
+</tfoot>
+</table>
+</div>
+</div>
+<div id="important-bug-fixes" class="section level1">
+<h1>Important bug fixes</h1>
+<ul>
+<li><code>bold</code>, <code>italic</code> and <code>monospace</code> in <code>cell_spec</code> now can take vectorized values.</li>
+<li>Changed from <code>xml2::read_xml</code> to <code>xml2::read_html</code> with settings to avoid some strange bugs on some machines.</li>
+</ul>
+</div>
+
+    </div>
+
+    
+    
+<div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">Hao Zhu</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">2018-01-16</span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">License</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+
+    
+    
+
+    <footer class="post-footer">
+      <div class="post-tags">
+          
+          <a href="/tags/r/">R</a>
+          
+          <a href="/tags/r-package/">R package</a>
+          
+          <a href="/tags/kableextra/">kableExtra</a>
+          
+        </div>
+
+      
+      <nav class="post-nav">
+        
+        
+          <a class="next" href="/post/2015-10-22-when-do-you-need-a-portable-shiny-app/">
+            <span class="next-text nav-default">When do you need a portable Shiny App?</span>
+            <span class="prev-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+  
+
+  
+
+  
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:haozhu233@gmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://stackoverflow.com/users/4586888/hao" class="iconfont icon-stack-overflow" title="stack-overflow"></a>
+      <a href="https://twitter.com/haozhu233" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="https://www.linkedin.com/in/haozhu233/" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="https://github.com/haozhu233" class="iconfont icon-github" title="github"></a>
+  <a href="/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2018
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">Hao Zhu</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+<script src="/lib/highlight/highlight.pack.js?v=20171001"></script>
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox-3.1.20.min.js"></script>
+<script type="text/javascript" src="/dist/even.min.js?v=2.7.2"></script>
+
+
+
+
+</body>
+</html>

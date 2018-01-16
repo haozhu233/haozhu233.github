@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>How to apply the MVVM pattern in reproducible research? - @haozhu233</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="Hao Zhu" />
+  <meta name="description" content="The penalty for a mistake on a simple structure is only a little time and maybe some embarrassment.
+More Complicated structures require more careful planning.
+&amp;ndash; Steve McConnell in Code Complete 2
+ If you are using Rmarkdown just to build a simple instruction or a blog post, you don&amp;rsquo;t need to worry about your code structure at all. Mistakes in this kind of small projects are easy to be fixed." />
+
+  <meta name="keywords" content="R, machine learning, Arduino, React Native" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.25.1" />
+
+
+<link rel="canonical" href="/post/2015-04-15-mvvm-in-reproducible-research/" />
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="icon" href="/favicon.ico" />
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+
+
+
+<link href="/dist/even.min.css?v=2.7.2" rel="stylesheet">
+<link href="/lib/fancybox/jquery.fancybox-3.1.20.min.css" rel="stylesheet">
+
+<meta property="og:title" content="How to apply the MVVM pattern in reproducible research?" />
+<meta property="og:description" content="The penalty for a mistake on a simple structure is only a little time and maybe some embarrassment.
+More Complicated structures require more careful planning.
+&ndash; Steve McConnell in Code Complete 2
+ If you are using Rmarkdown just to build a simple instruction or a blog post, you don&rsquo;t need to worry about your code structure at all. Mistakes in this kind of small projects are easy to be fixed." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/2015-04-15-mvvm-in-reproducible-research/" />
+
+
+
+<meta property="article:published_time" content="2015-04-15T00:00:00&#43;00:00"/>
+<meta property="article:modified_time" content="2015-04-15T00:00:00&#43;00:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="How to apply the MVVM pattern in reproducible research?">
+<meta itemprop="description" content="The penalty for a mistake on a simple structure is only a little time and maybe some embarrassment.
+More Complicated structures require more careful planning.
+&ndash; Steve McConnell in Code Complete 2
+ If you are using Rmarkdown just to build a simple instruction or a blog post, you don&rsquo;t need to worry about your code structure at all. Mistakes in this kind of small projects are easy to be fixed.">
+
+
+<meta itemprop="dateModified" content="2015-04-15T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="842">
+
+
+
+<meta itemprop="keywords" content="" />
+
+
+  <meta name="twitter:card" content="summary"/>
+
+
+
+<meta name="twitter:text:title" content="How to apply the MVVM pattern in reproducible research?"/>
+<meta name="twitter:title" content="How to apply the MVVM pattern in reproducible research?"/>
+<meta name="twitter:description" content="The penalty for a mistake on a simple structure is only a little time and maybe some embarrassment.
+More Complicated structures require more careful planning.
+&ndash; Steve McConnell in Code Complete 2
+ If you are using Rmarkdown just to build a simple instruction or a blog post, you don&rsquo;t need to worry about your code structure at all. Mistakes in this kind of small projects are easy to be fixed."/>
+
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">@haozhu233</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">About</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">@haozhu233</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">About</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">How to apply the MVVM pattern in reproducible research?</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2015-04-15 </span>
+        
+        
+        
+      </div>
+    </header>
+
+    
+    
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#what-is-mvvm"><em>What is MVVM?</em></a></li>
+<li><a href="#how-can-we-use-mvvm-design-pattern-in-reproducible-research"><em>How can we use MVVM design pattern in reproducible research?</em></a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+    
+    <div class="post-content">
+      
+
+<blockquote>
+<p>The penalty for a mistake on a simple structure is only a little time and maybe some embarrassment.</p>
+
+<p>More Complicated structures require more careful planning.<br />
+&ndash; <cite>Steve McConnell</cite> in <a href="http://www.amazon.com/Code-Complete-Practical-Handbook-Construction/dp/0735619670">Code Complete 2</a></p>
+</blockquote>
+
+<p>If you are using <a href="http://rmarkdown.rstudio.com/">Rmarkdown</a> just to build a simple instruction or a blog post, you don&rsquo;t need to worry about your code structure at all. Mistakes in this kind of small projects are easy to be fixed. However, if you are asking <code>Rmarkdown</code>to generate a 50-page-long paper with 10 tables and 5 figures, you would better to think of a good way to organize your codes because you don&rsquo;t want to get into a case in which you have to make edits to 200 different places throughout your <code>markdown</code> document in order to fix a small mistake 200 times. This kind of code revision is time-consuming and you might also get a chance to make some stupid mistakes that can only increase your work load and make you feel worse. Having a good software architectural design is also very meaningful if you are collaborating with someone else. A clean code structure plays an important role in helping other people understand your codes.</p>
+
+<p>People in the field of software engineering developped many design patterns for software architecture. I don&rsquo;t want to pretend I know a lot about them but as far as I know, I believe the most suitable design pattern for a long and complicated reproducible <code>Rmarkdown</code> report is something called Model/View/ViewModel (<em>MVVM</em>)</p>
+
+<h2 id="what-is-mvvm"><em>What is MVVM?</em></h2>
+
+<p>The concept of <em>MVVM</em> was first announced by <a href="https://www.linkedin.com/pub/john-gossman/2/495/566">John Gossman</a> in <a href="http://blogs.msdn.com/b/johngossman/archive/2005/10/08/478683.aspx">his blog</a> in 2005. It is a variation of Model/View/Controller (<em>MVC</em>), which is one of the most important designs in software architecture. The <em>MVVM</em> design is widely adopted in today&rsquo;s website design, where the Model is the database, the View is the webpage and the View Model is the connection part that packs up data from the database and pass them to the View part. I&rsquo;ll provide an example of using these concepts in reproducible research in the next section but you can alway go to <a href="http://blogs.msdn.com/b/johngossman/archive/2005/10/08/478683.aspx">John&rsquo;s blog</a>, which explained these concepts in a much better way,
+for more information.</p>
+
+<p>Also, I really like <a href="http://www.quora.com/What-metaphor-is-good-for-understanding-the-Model-View-Controller-pattern">Ryan Nystrom&rsquo;s metaphor about <em>MVC</em> on Quora</a>, even though I believe his painting metaphor fits the concepts of <em>MVVM</em> better. In his post, he said,<br />
+&gt; Paints are the model. They have unique and similar properties to other paints. You can mix them or use them as pure as possible.</p>
+
+<blockquote>
+<p>The painter is the controller. The painter performs the task using the paint and easel. The painter takes the paint from the palette and decides how to apply it to the easel.</p>
+
+<p>The easel is the view. It is agnostic of the painter and paint and doesn&rsquo;t care how it will be used. It does, however, have qualities like size and texture that effect the outcome of the painting.</p>
+</blockquote>
+
+<p><img src="{{ site.url }}/public/mvvm.jpg" alt="mvvm" /></p>
+
+<h2 id="how-can-we-use-mvvm-design-pattern-in-reproducible-research"><em>How can we use MVVM design pattern in reproducible research?</em></h2>
+
+<p>Suppose we are trying to write a reproducible report for a randomized clinical trial. This trial has 2 visits and 5 clinical measuring instruments(A1, A2,&hellip;, A5). The results for each instrument are stored in separated files and the randomization information is stored in a file called &ldquo;random.txt&rdquo;. We are supposed to make 2 tables in the final report.</p>
+
+<ul>
+<li>Step 1. Model (A1.R, A2.R,&hellip;, A5.R files)
+In this step, you combine the randomization file with the data file for each instrument, clean the data, and do some necessary reformatting to make sure you can have <a href="http://vita.had.co.nz/papers/tidy-data.pdf">tidy data</a> available for all the tests. You may want to export these tidy data if you have the need to share the cleaned database with someone else.<br /></li>
+<li>Step 2. View Models (table1.R, table2.R, figure1.R files)
+In this step, you are supposed to generate tables and figures, which are mostly ready to be printed on the paper. However, you don&rsquo;t need to worry about the table/figure formatting (Title, footnotes&hellip;, etc.) here. Those accessaries can be easily added on during the 3rd step. Here, for example, if table 1 need all the baseline visit data from test A1, A2 and A3, you will need to <code>source</code> A1.R, A2.R and A3.R, merge/join these tidy data for baseline, and do appropriate analysis to generate the table. I will suggest you to put all of the files in this step in a sub-folder with the name (or nickname) of the paper, for example, &ldquo;primary analysis&rdquo;.<br /></li>
+<li>Step 3. View (primary.analysis.rmd file)
+In this step, you should <code>source</code> all the tables/figures you generated in Step2 at the very beginning of your <code>.rmd</code> file. Then you can go ahead to write the report like you usually do and print the tables/figures when necessary.</li>
+</ul>
+
+<p><img src="{{ site.url }}/public/mvvm.example.jpg" alt="mvvm.example" /></p>
+
+<p>This is just an example showing how I would adopt the MVVM design into my code structure. Different people may have different understandings to the concepts of this design. Also, in different cases with differnt scales, you might want to modify this structure as you need, as long as the ultimate goal of constructing a maintainable project is achieved.</p>
+
+    </div>
+
+    
+    
+<div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">Hao Zhu</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">2015-04-15</span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">License</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+
+    
+    
+
+    <footer class="post-footer">
+      
+
+      
+      <nav class="post-nav">
+        
+          <a class="prev" href="/post/2015-04-15-architectual-thinking-in-rmarkdown/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">&#34;Build&#34; a reproducible report, instead of &#34;writing&#34; one</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        
+          <a class="next" href="/post/2015-04-03-redcap-api-and-r-shiny/">
+            <span class="next-text nav-default">REDCap API and R Shiny</span>
+            <span class="prev-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+  
+
+  
+
+  
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:haozhu233@gmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://stackoverflow.com/users/4586888/hao" class="iconfont icon-stack-overflow" title="stack-overflow"></a>
+      <a href="https://twitter.com/haozhu233" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="https://www.linkedin.com/in/haozhu233/" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="https://github.com/haozhu233" class="iconfont icon-github" title="github"></a>
+  <a href="/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2018
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">Hao Zhu</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+<script src="/lib/highlight/highlight.pack.js?v=20171001"></script>
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox-3.1.20.min.js"></script>
+<script type="text/javascript" src="/dist/even.min.js?v=2.7.2"></script>
+
+
+
+
+</body>
+</html>

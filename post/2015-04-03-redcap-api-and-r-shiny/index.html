@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>REDCap API and R Shiny - @haozhu233</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="Hao Zhu" />
+  <meta name="description" content="REDCap, as says on its website, is a &amp;ldquo;mature and secure web application for building and managing online surveys and databases&amp;rdquo;. It is used in many clinical researches as the database and the database management tool. One of the benefits of combining the usage of REDCap and R is that REDCap has an API (application programming interface), which can be used to easily export and import data into R. In this way, it can reduce the burden of data transformation and reduce possible human mistakes." />
+
+  <meta name="keywords" content="R, machine learning, Arduino, React Native" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.25.1" />
+
+
+<link rel="canonical" href="/post/2015-04-03-redcap-api-and-r-shiny/" />
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="icon" href="/favicon.ico" />
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+
+
+
+<link href="/dist/even.min.css?v=2.7.2" rel="stylesheet">
+<link href="/lib/fancybox/jquery.fancybox-3.1.20.min.css" rel="stylesheet">
+
+<meta property="og:title" content="REDCap API and R Shiny" />
+<meta property="og:description" content="REDCap, as says on its website, is a &ldquo;mature and secure web application for building and managing online surveys and databases&rdquo;. It is used in many clinical researches as the database and the database management tool. One of the benefits of combining the usage of REDCap and R is that REDCap has an API (application programming interface), which can be used to easily export and import data into R. In this way, it can reduce the burden of data transformation and reduce possible human mistakes." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/2015-04-03-redcap-api-and-r-shiny/" />
+
+
+
+<meta property="article:published_time" content="2015-04-03T00:00:00&#43;00:00"/>
+<meta property="article:modified_time" content="2015-04-03T00:00:00&#43;00:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="REDCap API and R Shiny">
+<meta itemprop="description" content="REDCap, as says on its website, is a &ldquo;mature and secure web application for building and managing online surveys and databases&rdquo;. It is used in many clinical researches as the database and the database management tool. One of the benefits of combining the usage of REDCap and R is that REDCap has an API (application programming interface), which can be used to easily export and import data into R. In this way, it can reduce the burden of data transformation and reduce possible human mistakes.">
+
+
+<meta itemprop="dateModified" content="2015-04-03T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="336">
+
+
+
+<meta itemprop="keywords" content="" />
+
+
+  <meta name="twitter:card" content="summary"/>
+
+
+
+<meta name="twitter:text:title" content="REDCap API and R Shiny"/>
+<meta name="twitter:title" content="REDCap API and R Shiny"/>
+<meta name="twitter:description" content="REDCap, as says on its website, is a &ldquo;mature and secure web application for building and managing online surveys and databases&rdquo;. It is used in many clinical researches as the database and the database management tool. One of the benefits of combining the usage of REDCap and R is that REDCap has an API (application programming interface), which can be used to easily export and import data into R. In this way, it can reduce the burden of data transformation and reduce possible human mistakes."/>
+
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">@haozhu233</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">About</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">@haozhu233</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">About</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">REDCap API and R Shiny</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2015-04-03 </span>
+        
+        
+        
+      </div>
+    </header>
+
+    
+    
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  
+  <div class="post-toc-content always-active">
+    
+  </div>
+</div>
+
+    
+    <div class="post-content">
+      <p><a href="http://project-redcap.org/">REDCap</a>, as says on its website, is a &ldquo;mature and secure web application for building and managing online surveys and databases&rdquo;. It is used in many clinical researches as the database and the database management tool. One of the benefits of combining the usage of REDCap and R is that REDCap has an API (application programming interface), which can be used to easily export and import data into R. In this way, it can reduce the burden of data transformation and reduce possible human mistakes. It allows us to streamline the whole process of data collection, data cleaning and data analysis. In fact, there have been quite a few people who practiced this methodology. There is a R package called <a href="http://cran.r-project.org/web/packages/REDCapR/index.html">REDCapR</a> on CRAN and here is its <a href="https://github.com/OuhscBbmc/REDCapR">github repo</a>. Thanks to their efforts, the process of importing data from the REDCap API is a lot easier than it used to be. There are some other interesting materials that might be helpful. I&rsquo;m listing them here: <a href="http://biostat.mc.vanderbilt.edu/wiki/pub/Main/JoAnnAlvarez/api.pdf">(Slide)Using the API through R to automate Redcap exports</a>and<a href="http://www.thomasrehman.net/2011/07/14/r-tip-directly-access-the-redcap-api-from-r/">R Tip – Directly Access the REDCap API from R</a>.</p>
+
+<p>What I&rsquo;m trying to say in this blog post is that after we import the real-time-updated data from the REDCap API, we can use <a href="http://shiny.rstudio.com/">&ldquo;R shiny&rdquo;</a> to maximize the benefits of having a streamline process. With R shiny, we can build a project website (better be an internal website for clinical research), which can display the real-time study enrollment information and some basic demographic information as the enrollment continues. REDCap itself has some basic data analytic tools to do some basic analyses but those tool are preprogramed and cannot fit in all the needs. The combination of REDCap API and R shiny allows statistical programmers and statisticians to build customized displaying panels, which can accurately demonstrate to investigators what they need to know during the study.</p>
+
+<p>I&rsquo;m going to pilot this method in a study I&rsquo;m recently working on. I&rsquo;ll provide an update on this post later this year based on my practice.</p>
+
+    </div>
+
+    
+    
+<div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">Hao Zhu</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">2015-04-03</span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">License</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+
+    
+    
+
+    <footer class="post-footer">
+      
+
+      
+      <nav class="post-nav">
+        
+          <a class="prev" href="/post/2015-04-15-mvvm-in-reproducible-research/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">How to apply the MVVM pattern in reproducible research?</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+  
+
+  
+
+  
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:haozhu233@gmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://stackoverflow.com/users/4586888/hao" class="iconfont icon-stack-overflow" title="stack-overflow"></a>
+      <a href="https://twitter.com/haozhu233" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="https://www.linkedin.com/in/haozhu233/" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="https://github.com/haozhu233" class="iconfont icon-github" title="github"></a>
+  <a href="/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2018
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">Hao Zhu</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+<script src="/lib/highlight/highlight.pack.js?v=20171001"></script>
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox-3.1.20.min.js"></script>
+<script type="text/javascript" src="/dist/even.min.js?v=2.7.2"></script>
+
+
+
+
+</body>
+</html>
