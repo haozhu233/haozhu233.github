@@ -23,6 +23,15 @@ Another funny thing about my name, after I come to the US and switched the order
     </item>
     
     <item>
+      <title>Using Package Vignette as Test Cases</title>
+      <link>/post/using-package-vignette-as-test-cases/</link>
+      <pubDate>Fri, 19 Jan 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/post/using-package-vignette-as-test-cases/</guid>
+      <description>Usually, writing unit test is supposed to be a good practice when you develop software packages. However, in some cases, I found</description>
+    </item>
+    
+    <item>
       <title>What’s New in kableExtra 0.7.0</title>
       <link>/post/what-s-new-in-kableextra-0-7-0/</link>
       <pubDate>Tue, 16 Jan 2018 00:00:00 +0000</pubDate>

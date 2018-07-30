@@ -6,10 +6,19 @@
     <description>Recent content in Posts on @haozhu233</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 16 Jan 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 19 Jan 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Using Package Vignette as Test Cases</title>
+      <link>/post/using-package-vignette-as-test-cases/</link>
+      <pubDate>Fri, 19 Jan 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/post/using-package-vignette-as-test-cases/</guid>
+      <description>Usually, writing unit test is supposed to be a good practice when you develop software packages. However, in some cases, I found</description>
+    </item>
     
     <item>
       <title>What’s New in kableExtra 0.7.0</title>

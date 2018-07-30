@@ -10,6 +10,13 @@
   </url>
   
   <url>
+    <loc>/post/using-package-vignette-as-test-cases/</loc>
+    <lastmod>2018-01-19T13:39:19-05:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>/post/what-s-new-in-kableextra-0-7-0/</loc>
     <lastmod>2018-01-16T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
@@ -66,7 +73,14 @@
   
   <url>
     <loc>/post/</loc>
-    <lastmod>2018-01-16T00:00:00+00:00</lastmod>
+    <lastmod>2018-01-19T13:39:19-05:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/categories/r/</loc>
+    <lastmod>2018-01-19T13:39:19-05:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0</priority>
   </url>
@@ -79,15 +93,8 @@
   </url>
   
   <url>
-    <loc>/categories/r/</loc>
-    <lastmod>2018-01-16T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>/tags/r-package/</loc>
-    <lastmod>2018-01-16T00:00:00+00:00</lastmod>
+    <lastmod>2018-01-19T13:39:19-05:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0</priority>
   </url>
