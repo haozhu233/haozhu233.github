@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>Using Package Vignette as Test Cases - @haozhu233</title>
+  <title>Reading notes from statistical rethinking - @haozhu233</title>
   <meta name="renderer" content="webkit" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
@@ -16,8 +16,10 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="Hao Zhu" />
-  <meta name="description" content="Usually, writing unit test is supposed to be a good practice when you develop software packages. However, in some cases, I found" />
+<meta name="author" content="Hao" />
+  <meta name="description" content="I always have an anxiety to learn more about bayesian analysis but I have never put in any real action. Earlier today, I saw Davis Vaughan&amp;rsquo;s tweet on twitter asking basically the same question that has been bugging me for a long time. I saw many people are talking about the &amp;ldquo;statistical rethinking&amp;rdquo; book so I think, &amp;ldquo;umm, maybe I should give it a try&amp;rdquo;.
+https://twitter.com/dvaughan32/status/1027699962832986115
+Luckily, I found this book in the little library we maintained at my workplace." />
 
   <meta name="keywords" content="R, machine learning, Arduino, React Native" />
 
@@ -29,7 +31,7 @@
 <meta name="generator" content="Hugo 0.53" />
 
 
-<link rel="canonical" href="/post/using-package-vignette-as-test-cases/" />
+<link rel="canonical" href="/post/reading-notes-from-statistical-rethinking/" />
 
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -47,26 +49,32 @@
 <link href="/dist/even.min.css?v=2.7.2" rel="stylesheet">
 <link href="/lib/fancybox/jquery.fancybox-3.1.20.min.css" rel="stylesheet">
 
-<meta property="og:title" content="Using Package Vignette as Test Cases" />
-<meta property="og:description" content="Usually, writing unit test is supposed to be a good practice when you develop software packages. However, in some cases, I found" />
+<meta property="og:title" content="Reading notes from statistical rethinking" />
+<meta property="og:description" content="I always have an anxiety to learn more about bayesian analysis but I have never put in any real action. Earlier today, I saw Davis Vaughan&rsquo;s tweet on twitter asking basically the same question that has been bugging me for a long time. I saw many people are talking about the &ldquo;statistical rethinking&rdquo; book so I think, &ldquo;umm, maybe I should give it a try&rdquo;.
+https://twitter.com/dvaughan32/status/1027699962832986115
+Luckily, I found this book in the little library we maintained at my workplace." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="/post/using-package-vignette-as-test-cases/" /><meta property="article:published_time" content="2018-01-19T00:00:00&#43;00:00"/>
-<meta property="article:modified_time" content="2018-01-19T13:39:19-05:00"/>
+<meta property="og:url" content="/post/reading-notes-from-statistical-rethinking/" /><meta property="article:published_time" content="2018-08-10T00:00:00&#43;00:00"/>
+<meta property="article:modified_time" content="2018-08-10T15:08:09-04:00"/>
 
-<meta itemprop="name" content="Using Package Vignette as Test Cases">
-<meta itemprop="description" content="Usually, writing unit test is supposed to be a good practice when you develop software packages. However, in some cases, I found">
-
-
-<meta itemprop="datePublished" content="2018-01-19T00:00:00&#43;00:00" />
-<meta itemprop="dateModified" content="2018-01-19T13:39:19-05:00" />
-<meta itemprop="wordCount" content="22">
+<meta itemprop="name" content="Reading notes from statistical rethinking">
+<meta itemprop="description" content="I always have an anxiety to learn more about bayesian analysis but I have never put in any real action. Earlier today, I saw Davis Vaughan&rsquo;s tweet on twitter asking basically the same question that has been bugging me for a long time. I saw many people are talking about the &ldquo;statistical rethinking&rdquo; book so I think, &ldquo;umm, maybe I should give it a try&rdquo;.
+https://twitter.com/dvaughan32/status/1027699962832986115
+Luckily, I found this book in the little library we maintained at my workplace.">
 
 
+<meta itemprop="datePublished" content="2018-08-10T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2018-08-10T15:08:09-04:00" />
+<meta itemprop="wordCount" content="209">
 
-<meta itemprop="keywords" content="R package," />
+
+
+<meta itemprop="keywords" content="" />
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Using Package Vignette as Test Cases"/>
-<meta name="twitter:description" content="Usually, writing unit test is supposed to be a good practice when you develop software packages. However, in some cases, I found"/>
+<meta name="twitter:title" content="Reading notes from statistical rethinking"/>
+<meta name="twitter:description" content="I always have an anxiety to learn more about bayesian analysis but I have never put in any real action. Earlier today, I saw Davis Vaughan&rsquo;s tweet on twitter asking basically the same question that has been bugging me for a long time. I saw many people are talking about the &ldquo;statistical rethinking&rdquo; book so I think, &ldquo;umm, maybe I should give it a try&rdquo;.
+https://twitter.com/dvaughan32/status/1027699962832986115
+Luckily, I found this book in the little library we maintained at my workplace."/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -133,13 +141,13 @@
           <article class="post">
     
     <header class="post-header">
-      <h1 class="post-title">Using Package Vignette as Test Cases</h1>
+      <h1 class="post-title">Reading notes from statistical rethinking</h1>
 
       <div class="post-meta">
-        <span class="post-time"> 2018-01-19 </span>
+        <span class="post-time"> 2018-08-10 </span>
         <div class="post-category">
             
-              <a href="/categories/r/"> R </a>
+              <a href="/categories/readings/"> readings </a>
             
           </div>
         
@@ -152,7 +160,31 @@
 
     
     <div class="post-content">
-      <p>Usually, writing unit test is supposed to be a good practice when you develop software packages. However, in some cases, I found</p>
+      
+
+<p>I always have an anxiety to learn more about bayesian analysis but I have never put in any real action. Earlier today, I saw Davis Vaughan&rsquo;s tweet on twitter asking basically the same question that has been bugging me for a long time. I saw many people are talking about the &ldquo;statistical rethinking&rdquo; book so I think, &ldquo;umm, maybe I should give it a try&rdquo;.</p>
+
+<p><a href="https://twitter.com/dvaughan32/status/1027699962832986115">https://twitter.com/dvaughan32/status/1027699962832986115</a></p>
+
+<p>Luckily, I found this book in the little library we maintained at my workplace. I read the preface + chapter 1 and I found myself really enjoying reading this book. I will try to put down some notes here. These notes may include some conclusions or just some good thought I found in the book.</p>
+
+<h1 id="preface">Preface</h1>
+
+<blockquote>
+<p>The book uses much more computer code than formal mathematics. Even excellent mathematicians can have trouble understanding an approach, until they see a working algorithm. This is because implementation in code form removes all ambiguities.</p>
+</blockquote>
+
+<p>Same as &ldquo;deep learning with R&rdquo;. Good to know I&rsquo;m not the only one who hates to read math. :P</p>
+
+<h1 id="chapter-1">Chapter 1</h1>
+
+<blockquote>
+<p>the classical procedures of introductory statistics tend to be <strong>inflexible</strong> and <strong>fragile</strong>.</p>
+
+<p>&hellip;, deductive falsification never works.</p>
+
+<p>all models are false, so what doe it mean to falsify a model?</p>
+</blockquote>
 
     </div>
 
@@ -163,23 +195,14 @@
     
 
     <footer class="post-footer">
-      <div class="post-tags">
-          
-          <a href="/tags/r-package/">R package</a>
-          
-        </div>
+      
 
       
       <nav class="post-nav">
         
-          <a class="prev" href="/post/reading-notes-from-statistical-rethinking/">
-            <i class="iconfont icon-left"></i>
-            <span class="prev-text nav-default">Reading notes from statistical rethinking</span>
-            <span class="prev-text nav-mobile">Prev</span>
-          </a>
         
-          <a class="next" href="/post/what-s-new-in-kableextra-0-7-0/">
-            <span class="next-text nav-default">What’s New in kableExtra 0.7.0</span>
+          <a class="next" href="/post/using-package-vignette-as-test-cases/">
+            <span class="next-text nav-default">Using Package Vignette as Test Cases</span>
             <span class="prev-text nav-mobile">Next</span>
             <i class="iconfont icon-right"></i>
           </a>

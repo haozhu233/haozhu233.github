@@ -19,5 +19,14 @@
       <description></description>
     </item>
     
+    <item>
+      <title>Readings</title>
+      <link>/categories/readings/</link>
+      <pubDate>Fri, 10 Aug 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/categories/readings/</guid>
+      <description></description>
+    </item>
+    
   </channel>
 </rss>

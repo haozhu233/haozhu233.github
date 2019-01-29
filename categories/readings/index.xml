@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Readings on @haozhu233</title>
+    <link>/categories/readings/</link>
+    <description>Recent content in Readings on @haozhu233</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Fri, 10 Aug 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/categories/readings/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Reading notes from statistical rethinking</title>
+      <link>/post/reading-notes-from-statistical-rethinking/</link>
+      <pubDate>Fri, 10 Aug 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/post/reading-notes-from-statistical-rethinking/</guid>
+      <description>I always have an anxiety to learn more about bayesian analysis but I have never put in any real action. Earlier today, I saw Davis Vaughan&amp;rsquo;s tweet on twitter asking basically the same question that has been bugging me for a long time. I saw many people are talking about the &amp;ldquo;statistical rethinking&amp;rdquo; book so I think, &amp;ldquo;umm, maybe I should give it a try&amp;rdquo;.
+https://twitter.com/dvaughan32/status/1027699962832986115
+Luckily, I found this book in the little library we maintained at my workplace.</description>
+    </item>
+    
+  </channel>
+</rss>
